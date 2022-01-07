@@ -454,3 +454,104 @@ if (document.querySelector(".activateDeleteButton")) {
     });
     
 }
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  }
+  
+  function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+  }
+
+function getColorVariation(color, up, down) {
+    const upValues = [];
+    const downValues = [];
+
+    const colorParsed = color.substring(4, color.length-1)
+        .replace(/ /g, '')
+        .split(',');
+
+    let currentColor = colorParsed; /// this variable can never be global there is already a global variable with this name
+
+    upValues.push(color);
+
+    for (let i = 1; i < up; i++) {
+        const r = +currentColor[0]+(1*i);
+        const g = +currentColor[1]+(1*i);
+        const b = +currentColor[2]+(1*i);
+        const color = [`rgb(${r},${g},${b})`, rgbToHex(r, g, b)];
+        upValues.push(color);
+    }
+
+    for (let i = 1; i < down; i++) {
+        const r = currentColor[0]*(i/down);
+        const g = currentColor[1]*(i/down);
+        const b = currentColor[2]*(i/down);
+        const color = [`rgb(${r},${g},${b})`, rgbToHex(r, g, b)];
+        downValues.push(color);
+    }
+
+    return {up: upValues, down: downValues}
+}
+
+function ShowColorVariations(baseColorRGB) {
+
+{
+
+    const colors = getColorVariation(baseColorRGB, 50, 50);
+
+    const color_select_popup = document.createElement("div");
+    const color_div = document.createElement("div");
+
+    color_select_popup.classList = "color-select-popup";
+    color_div.classList = "color-div";
+
+    document.body.appendChild(color_select_popup);
+    color_select_popup.appendChild(color_div);
+
+
+    colors['down'].forEach( (color) => {
+        const colorSquare = document.createElement("div");
+        const p = document.createElement("p");
+
+        colorSquare.classList = "colorSquare";
+
+        colorSquare.style.backgroundColor = color[0];
+
+        p.textContent = color[1];
+
+        color_div.appendChild(colorSquare);
+        colorSquare.appendChild(p);
+    })
+
+    colors['up'].forEach( (color) => {
+        const colorSquare = document.createElement("div");
+        const p = document.createElement("p");
+
+        colorSquare.classList = "colorSquare";
+
+        colorSquare.style.backgroundColor = color[0];
+
+        p.textContent = color[1];
+
+        color_div.appendChild(colorSquare);
+        colorSquare.appendChild(p);
+    })
+
+}
+
+
+
+
+}
+
+if (document.querySelector(".colorpads-container")) {
+    const colorCards = document.querySelectorAll(".colorDiv");
+
+    colorCards.forEach( (colorCard) => {
+        colorCard.addEventListener('click', () => {
+            ShowColorVariations(colorCard.style.backgroundColor);
+        })
+    })
+}

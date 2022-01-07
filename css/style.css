@@ -450,3 +450,51 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 /* #endregion colorcards */
+
+/* #region color-select-popup */
+
+.color-select-popup {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    background-color: rgba(35, 35, 35, .5);
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-select-popup > .color-div {
+    display: flex;
+    justify-content: left;
+    background-color: var(--white);
+    border-radius: 15px;
+    width: 90%;
+    height: 80px;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.color-div > .colorSquare {
+    display: flex;
+    height: 100%;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    left: 0;
+}
+
+.color-div > .colorSquare > p {
+    opacity: 0;
+    transition: opacity .5s, transform .5s;
+    font-weight: bold;
+}
+
+.color-div > .colorSquare:hover > p {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* #endregion color-select-popup */
