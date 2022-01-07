@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+
+    <div class="top-container-2">
+        <div class="selectPage-nav">
+            <button class="selectPageButton" page="palletSetting" enabled=true>Pallet Settings</button>
+            <button class="selectPageButton" page="basecolors" enabled=false>Base Color(s)</button>
+            <button class="selectPageButton" page="basecolors2" enabled=false>Code Color(s)</button>
+            <button class="selectPageButton last" page="basecolors3" enabled=false>Interactive Color(s)</button>
+        </div>
+    </div>
+
+    <div id=palletSetting>
+        <div class="center-content padding-4">
+            <input type="text" class="inputPalletName" placeholder="Pallet Name"/>
+            <button class="applypalletname">Apply Name</button>
+        </div>
+    </div>
+
+    <div class="hide" id=basecolors>
+        <div class="colorpads-add-container">
+            <button class="addColorButton">+</button>
+        </div>
+        <div class="colorpick-container">
+            <div class="color-range-div">
+                <input id=c1 type="range" min=0 max=255 value="10"/>
+                <p class="range-value" range-id=c1>0</p>
+            </div>
+            <div class="color-range-div">
+                <input id=c2 type="range" min=0 max=255 value="10"/>
+                <p class="range-value" range-id=c2>0</p>
+            </div>
+            <div class="color-range-div">
+                <input id=c3 type="range" min=0 max=255 value="10"/>
+                <p class="range-value" range-id=c3>0</p>
+            </div>
+            <div class="colorShowcase">
+                <button class="applyColor">Apply</button>
+                <button class="applyColorCancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="hide" id=basecolors2>
+        k
+    </div>
+
+    <div class="hide" id=basecolors3>
+        kk
+    </div>
+
+    <button class="confirmPalletButton">
+        Confirm
+    </button>
+
+</body>
+    <script src="/js/main.js"></script>
+</html>
