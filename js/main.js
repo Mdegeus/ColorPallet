@@ -135,18 +135,23 @@ function addPalletObject(palletData) {
     const title = document.createElement("p");
     const colorPadDiv = document.createElement("div");
     const deleteButton = document.createElement("button");
+    const copyButton = document.createElement("button");
 
     outside.classList = "color-pad-item";
     title.classList = "title";
     idtagg.classList = "pallet-id";
     colorPadDiv.classList = "pallet-colors";
     deleteButton.classList = "pallet-delete-button";
+    copyButton.classList = "copyButton";
+    copyButton.value = JSON.stringify(palletData);
 
     idtagg.textContent = palletData['id'];
     title.textContent = palletData['title'];
     deleteButton.textContent = "-";
+    copyButton.textContent = "Copy Pallet";
 
     outside.append(idtagg, body, deleteButton);
+    title.append(copyButton);
     body.append(title, colorPadDiv);
 
     target.appendChild(outside);
@@ -231,6 +236,11 @@ function addPalletObject(palletData) {
         setPallets(palletDataArray);
 
         location.reload();
+    })
+
+    copyButton.addEventListener('click', () => {
+        navigator.clipboard.writeText(copyButton.value);
+        alert("The pallet has been copied. import at the add page > pallet settings.");
     })
 
 }
@@ -397,6 +407,28 @@ if (document.querySelector(".range-value")) {
                 }
 
             })
+        }
+    })
+}
+
+if (document.querySelector(".importForm")) {
+    const importButton = document.querySelector(".submitpallet");
+
+    importButton.addEventListener("click", () => {
+
+        const importText = document.querySelector(".palletCode").value;
+
+        let json = importText;
+
+        try {
+            json = JSON.parse(json);
+
+            addPallet(json);
+            alert("Pallet imported successfully")
+
+        } catch {
+            console.error("The inserted text is not safe for the pallet structure there for transfer has been canceled.")
+            alert("The inserted text is not safe for the pallet structure there for transfer has been canceled")
         }
     })
 }

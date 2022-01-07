@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
+
 <body>
     <nav>
         <a href="/">Home</a>
@@ -24,8 +26,15 @@
 
     <div id=palletSetting>
         <div class="center-content padding-4">
-            <input type="text" class="inputPalletName" placeholder="Pallet Name"/>
+            <input type="text" class="inputPalletName" placeholder="Pallet Name" />
             <button class="applypalletname">Apply Name</button>
+        </div>
+        <div class="importForm">
+            <p>Warning: this will import the inserted text directly into the localstorage. only insert text thats from a
+                pallet on this site or errors may accur. if you find errors please reset your local storage of this
+                site.</p>
+            <textarea class="palletCode"></textarea>
+            <button class="submitpallet">Import Text</button>
         </div>
     </div>
 
@@ -35,15 +44,15 @@
         </div>
         <div class="colorpick-container">
             <div class="color-range-div">
-                <input id=c1 type="range" min=0 max=255 value="10"/>
+                <input id=c1 type="range" min=0 max=255 value="10" />
                 <p class="range-value" range-id=c1>0</p>
             </div>
             <div class="color-range-div">
-                <input id=c2 type="range" min=0 max=255 value="10"/>
+                <input id=c2 type="range" min=0 max=255 value="10" />
                 <p class="range-value" range-id=c2>0</p>
             </div>
             <div class="color-range-div">
-                <input id=c3 type="range" min=0 max=255 value="10"/>
+                <input id=c3 type="range" min=0 max=255 value="10" />
                 <p class="range-value" range-id=c3>0</p>
             </div>
             <div class="colorShowcase">
@@ -66,5 +75,6 @@
     </button>
 
 </body>
-    <script src="/js/main.js"></script>
+<script src="/js/main.js"></script>
+
 </html>
