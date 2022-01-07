@@ -147,8 +147,10 @@ function addPalletObject(palletData) {
 
     idtagg.textContent = palletData['id'];
     title.textContent = palletData['title'];
-    deleteButton.textContent = "-";
+    deleteButton.textContent = "Delete";
     copyButton.textContent = "Copy Pallet";
+
+    deleteButton.setAttribute("active", "false");
 
     outside.append(idtagg, body, deleteButton);
     title.append(copyButton);
@@ -423,12 +425,32 @@ if (document.querySelector(".importForm")) {
         try {
             json = JSON.parse(json);
 
-            addPallet(json);
-            alert("Pallet imported successfully")
-
+            if (new pallet(json)) {
+                addPallet(json);
+                alert("Pallet imported successfully")
+            } else {
+                alert("This pallet code is corrupted. Please copy again.")
+            }
         } catch {
             console.error("The inserted text is not safe for the pallet structure there for transfer has been canceled.")
             alert("The inserted text is not safe for the pallet structure there for transfer has been canceled")
         }
     })
+}
+
+if (document.querySelector(".activateDeleteButton")) {
+
+    let deleteMode = false;
+
+    document.querySelector(".activateDeleteButton").addEventListener("click", () => {
+        deleteMode = !deleteMode;
+        
+        const deleteButtons = document.querySelectorAll(".pallet-delete-button");
+
+        deleteButtons.forEach((button) => {
+            button.setAttribute("active", deleteMode);
+        })
+
+    });
+    
 }
