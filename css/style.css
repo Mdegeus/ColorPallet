@@ -164,11 +164,18 @@ nav > * {
     border-width: 0 1.5px 0 0;
 }
 
+.pallet-delete-button[active] {
+    transition: transform 0.25s;
+}
+
 .pallet-delete-button[active=false] {
-    display: none;
+    transform: scale(.8);
+    opacity: 0;
 }
 
 .pallet-delete-button[active=true] {
+    transform: scale(1);
+    opacity: 1;
     background-color: var(--error);
     color: var(--white);
     margin-left: auto;
@@ -487,9 +494,14 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 .color-div > .colorSquare > p {
+    height: 80%;
+    width: 100%;
     opacity: 0;
     transition: opacity .5s, transform .5s;
     font-weight: bold;
+    text-align: center;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .color-div > .colorSquare:hover > p {

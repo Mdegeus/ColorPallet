@@ -214,7 +214,7 @@ function addPalletObject(palletData) {
         rgbText.textContent = "RGB: " + color;
         
         if (colorParsed[0]) {
-            hexText.textContent = "Hex: " + RGBToHex(colorParsed[0],colorParsed[1],colorParsed[2]);
+            hexText.textContent = "Hex: " + rgbToHex(colorParsed[0],colorParsed[1],colorParsed[2]);
         } else {
             hexText.textContent = "Hex: No RGB code";
         }
@@ -474,8 +474,6 @@ function getColorVariation(color, up, down) {
 
     let currentColor = colorParsed; /// this variable can never be global there is already a global variable with this name
 
-    upValues.push(color);
-
     for (let i = 1; i < up; i++) {
         const r = +currentColor[0]+(1*i);
         const g = +currentColor[1]+(1*i);
@@ -496,8 +494,6 @@ function getColorVariation(color, up, down) {
 }
 
 function ShowColorVariations(baseColorRGB) {
-
-{
 
     const colors = getColorVariation(baseColorRGB, 50, 50);
 
@@ -538,11 +534,6 @@ function ShowColorVariations(baseColorRGB) {
         color_div.appendChild(colorSquare);
         colorSquare.appendChild(p);
     })
-
-}
-
-
-
 
 }
 
